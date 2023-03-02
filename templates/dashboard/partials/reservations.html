@@ -1,0 +1,30 @@
+
+<div class="col s6 m6 l6 xl6">
+    <div>
+        <b>Mis Reservaciones</b>
+    </div>
+    <table class="striped centered responsive-table">
+        <thead>
+            <tr>
+                <th># Reservación</th>
+                <th>Evento</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in objects_reserve %}
+                <tr>
+                    <td><b>{{item.reserve_num}}</b></td>
+                    <td>{{ item.event_rooms.name }}</td>
+                    {% if grl_usr.type_user.name == "Cliente" %}
+                        <td> <a href="{% url 'cancel_reserve' item.event_rooms.id grl_usr.pk %}" title="Cancelar">Cancelar</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+</div>

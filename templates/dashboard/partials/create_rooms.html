@@ -1,0 +1,74 @@
+<div class="col s6 m6 l6 xl6">
+    <div>
+        <b>Sala</b>
+    </div>
+    <form id="form_rooms" method="post"> {% csrf_token %}
+        {{ rooms_form.name_form }}
+        <div class="row">
+          <div class="input-field col s12">
+              {{ rooms_form.name }}
+              {{ rooms_form.name.label_tag }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+              {{ rooms_form.capacity }}
+              {{ rooms_form.capacity.label_tag }}
+          </div>
+        </div>
+
+         <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <button type="submint" class="waves-effect waves-light btn">Guardar</button>
+            </div>
+        </div>
+
+      </form>
+
+</div>
+
+<div class="col s6 m6 l6 xl6">
+    <div>
+        <b>Evento</b>
+    </div>
+    <form id="form_rooms" method="post"> {% csrf_token %}
+        {{ events_form.name_form }}
+        <div class="row">
+          <div class="input-field col s12">
+              {{ events_form.name }}
+              {{ events_form.name.label_tag }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+              {{ events_form.date }}
+              {{ events_form.date.label_tag }}
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                {{ events_form.rooms }}
+                {{ events_form.rooms.label_tag }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                {{ events_form.events_type }}
+                {{ events_form.events_type.label_tag }}
+            </div>
+        </div>
+        
+         <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <button type="submint" class="waves-effect waves-light btn">Guardar</button>
+            </div>
+        </div>
+
+      </form>
+
+
+</div>

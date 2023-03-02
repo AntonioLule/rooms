@@ -1,0 +1,62 @@
+{% if grl_usr.type_user.name == "Negocio" %}  
+    <div class="col s6 m6 l6 xl6">
+        <div>
+            <b>Mis salas</b>
+        </div>
+        <table class="striped centered responsive-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Capacidad</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in objects_rooms %}
+                    <tr>
+                        <td>{{ item.name}}</td>
+                        <td>{{ item.capacity }}</td>
+                        <td> <a href="{% url 'delete_room' item.id %}" title="Eliminar" >Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+{% endif %}
+
+<div class="col s6 m6 l6 xl6">
+    <div>
+        <b>Mis Eventos</b>
+    </div>
+    <table class="striped centered responsive-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Sala</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in objects_events %}
+                <tr>
+                    <td>{{ item.name}}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.events_type.name }}</td>
+                    <td><b>{{ item.rooms.name  }}</b></td>
+                    {% if grl_usr.type_user.name == "Cliente" %}
+                        <td> <a href="{% url 'create_reserve' item.rooms.id grl_usr.pk %}" title="Reservar" >Reservar</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+</div>

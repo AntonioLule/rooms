@@ -1,0 +1,23 @@
+{# Messages Success #}
+{% if messages %}
+    <script type="text/javascript">
+        let html_string = '';
+        let type_toast = 'toast-success';
+
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                type_toast = 'toast-danger';
+            {% endif %}
+            html_string = html_string + '{{ message|striptags }}';
+            html_string += '<br/>';
+        {% endfor %}
+
+        html_string = html_string.replace('__all__', '');
+
+        M.toast({
+            html: html_string,
+            classes: type_toast
+        })
+
+    </script>
+{% endif %}

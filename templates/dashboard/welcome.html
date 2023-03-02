@@ -1,0 +1,128 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+
+{% block content %}
+   <div class="container">
+      <div class="row">
+        
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs" id="tabs">
+                <li class="tab col s4"><a class="active" href="#test1">Mis salas</a></li>
+              {% if grl_usr.type_user.name == "Negocio" %}
+                <li class="tab col s4"><a href="#test2">Crear Sala o Evento</a></li>
+              {% endif %}
+              {% if grl_usr.type_user.name == "Cliente" %}
+                <li class="tab col s4"><a href="#test3">Mis Reservaciones</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          
+          
+          <div id="test1" class="col s12">
+            {% include 'dashboard/partials/salas.html' %}
+          </div>
+          {% if grl_usr.type_user.name == "Negocio" %}  
+            <div id="test2" class="col s12">
+              {% include 'dashboard/partials/create_rooms.html' %}
+            </div>
+          {% endif %}
+          {% if grl_usr.type_user.name == "Cliente" %}
+            <div id="test3" class="col s12">
+              {% include 'dashboard/partials/reservations.html' %}
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+   </div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script>
+
+  let tab = document.getElementById("tabs");
+  let instance_tabs = M.Tabs.init(tab);
+    
+  document.addEventListener('DOMContentLoaded', function() {
+    //Init select
+    let elems = document.querySelectorAll('select');
+    let instances = M.FormSelect.init(elems);
+    //Init select
+    let inter_es = {
+      cancel: 'Cancelar',
+      clear: 'Limpiar',
+      done:    'Ok',
+      previousMonth:    '‹',
+      nextMonth:    '›',
+      months:[
+          'Enero',
+          'Febrero',
+          'Marzo',
+          'Abril',
+          'Mayo',
+          'Junio',
+          'Julio',
+          'Agosto',
+          'Septiembre',
+          'Octubre',
+          'Noviembre',
+          'Diciembre'
+      ],
+      monthsShort:[
+          'Ene',
+          'Feb',
+          'Mar',
+          'Abr',
+          'May',
+          'Jun',
+          'Jul',
+          'Ago',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dic'
+      ],
+  
+      weekdays:[
+          'Domingo',
+          'Lunes',
+          'Martes',
+          'Miércoles',
+          'Jueves',
+          'Viernes',
+          'Sábado'
+      ],
+  
+      weekdaysShort:[
+          'Dom',
+          'Lun',
+          'Mar',
+          'Mié',
+          'Jue',
+          'Vie',
+          'Sáb'
+      ],
+  
+      weekdaysAbbrev:    ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+  
+    };
+    let options_datepicker = {
+      selectMonth: true,
+      yearRange: [1920, new Date().getFullYear() + 4],
+      format: 'yyyy-mm-dd',
+      container: 'body',
+      i18n: inter_es
+    };
+
+    let elems_picker = document.querySelectorAll('.datepicker');
+    let instances_picker = M.Datepicker.init(elems_picker, options_datepicker);
+
+  });
+
+
+</script>
+{% endblock %}

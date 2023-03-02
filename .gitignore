@@ -1,0 +1,40 @@
+*.py[cod]
+*.log
+*.pot
+*.pyc
+*.pyo
+*~
+**~lock**
+*.py~*
+*.html~*
+*.css~*
+*.js~*
+**/__pycache__
+
+**__init__.py
+*.env
+
+### Django Migrations ###
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+
+### Django Settings ###
+pap/pap/settings.py
+
+### DS Store ###
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
+/.idea
+/bin
+/obj
+/include
+/lib
+/lib64
+/share
+
+/rooms-venv/*
+
