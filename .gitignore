@@ -20,8 +20,7 @@
 !**/migrations/__init__.py
 
 ### Django Settings ###
-rooms/settings.py
-/rooms/settings.py
+romms/settings.py
 ### DS Store ###
 .DS_Store
 ._.DS_Store
